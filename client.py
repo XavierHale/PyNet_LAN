@@ -1,6 +1,7 @@
 import socket
 import privateserver
 import random
+from slowprint import slowprint
 from threading import Thread
 from datetime import datetime
 from colorama import Fore, init, Back
@@ -155,11 +156,18 @@ def privchat():
         choice()
 
 def gamemenu():
-    print("This is still in progress, idk what ima put here")
-print("""
-Welcome to PyNet! This is a local messaging service, sorta like a BBS.
+    print("This is still in progress, crap may just ramdomly crash your computer if it feels like it")
+    print("""
+    (1) Host a Doom server
+    (2) Connect to a Doom server
+    (3) Snake?
+    
+    """)
 
-""")
+print("""
+    Welcome to PyNet! This is a local messaging service, sorta like a BBS.
+
+    """)
 
 def choice():
     print("""
