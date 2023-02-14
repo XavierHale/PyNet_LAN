@@ -165,9 +165,9 @@ def choice():
     print("""
     What would you like to do?
 
-    (1) Public chat     ()
-    (2) Private chat    ()
-    (3) Games           ()
+    (1) Public chat     
+    (2) Private chat    
+    (3) Games          
 
     """)
     boardchoice = input("Enter your choice>")
