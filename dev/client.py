@@ -210,6 +210,9 @@ What would you like to do?
         gamemenu()
     if boardchoice == "4":
         print("PyNet Version", ver)
+        print("Developed by Xavier Hale")
+        print("Version complied on 2/16/2023")
+        choice()
 choice()
 
     # close the socket
