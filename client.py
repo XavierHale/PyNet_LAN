@@ -161,9 +161,8 @@ def gamemenu():
     (1) Host a Doom server
     (2) Connect to a Doom server
     (3) Snake?
-    
+    Err 69420: Im lazy and haven't finished this. Dumping user container to menu...
     """)
-
 print("""
     Welcome to PyNet! This is a local messaging service, sorta like a BBS.
 
