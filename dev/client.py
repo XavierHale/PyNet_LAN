@@ -50,7 +50,7 @@ time.sleep(1)
 sp("Loaded NOCOM from NETWORK_EXPL")
 print("")
 time.sleep(1)
-ctypes.windll.kernel32.SetConsoleTitleW("PyNet Version ", ver)
+ctypes.windll.kernel32.SetConsoleTitleW("PyNet Version 1.1")
 def pubchat():
     # server's IP address
     # if the server is not on this machine, 
