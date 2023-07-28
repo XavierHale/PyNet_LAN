@@ -1,0 +1,524 @@
+Content-type: text/html
+
+<HTML><HEAD><TITLE>Manpage of BOOM.CFG</TITLE>
+</HEAD><BODY>
+<H1>BOOM.CFG</H1>
+Section: File Formats (5)<BR>Updated: local<BR><A HREF="#index">Index</A>
+<A HREF="http://localhost/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+boom.cfg, glboom.cfg - Configuration file for PrBoom v2.1.0 onwards
+<A NAME="lbAC">&nbsp;</A>
+<H2>USAGE</H2>
+
+When a version of PrBoom is
+run, it  searches for this configuration file to modify its default settings.
+Every time PrBoom exits, it rewrites the configuration file, updating any
+settings that have been changed using the in-game menus.
+<P>
+
+PrBoom expects the config file to be  <B>~/.prboom/boom.cfg</B>, or 
+<B>~/.prboom/glboom.cfg</B> if compiled with GL support. Alternatively, it 
+can be made to look elsewhere by using a command-line parameter:
+<P>
+
+{prboom,glboom}
+
+[<B>-config</B>
+
+<I>myconf</I>]
+
+
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>FORMAT</H2>
+
+<B>boom.cfg</B> consists of a number of variables and values. Each line is of the following 
+format:
+<P>
+
+[
+{ 
+{{#,;,[}
+<I>comment_text</I>
+
+,
+<I>variable </I>
+
+{<I>decimal_integer</I>, 0x&nbsp;<I>hex_integer</I>, &quot;<I>string_text</I>&quot;}}]
+<P>
+
+Any line beginning with a non-alphabetic character is treated as a comment and 
+ignored; for future compatibility you should start comments with a 
+<B>#</B>, <B>;</B> or <B>[</B>. 
+Note however that when PrBoom rewrites boom.cfg it does not preserve user added
+comments.
+<P>
+
+Any line beginning with an alphabetic character is treated as a variable-value pair. 
+The first word (sequence of non-whitespace characters) is the variable name, and 
+everything after the following block of whitespace is taken to be the value 
+assigned to the variable.
+<P>
+
+Variables not recognised by PrBoom, or which are given an invalid value or a value 
+of an inappropriate type, are ignored. Warning messages are given where relevant.
+<P>
+
+The variables recognised by PrBoom are described per-section in the following 
+sections. The sections are informal however; when PrBoom rewrites the config file 
+it writes in section headings and puts variables into the relevant sections, but 
+when reading these are ignored.
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>MISC SETTINGS</H2>
+
+<DL COMPACT>
+<DT><B>compatibility_level</B>
+
+<DD>
+PrBoom is capable of behaving in a way compatible with earlier versions of Doom and 
+Boom/PrBoom. The value given here selects the version to be compatible with when 
+doing new games/demos. See <B>README.compat</B> for details.
+<DT><B>realtic_clock_rate</B>
+
+<DD>
+Selects the speed that PrBoom runs at, as a percentage of normal game speed. 
+Leave at <B>0</B> unless you want to experiment. Note that it is considered 
+`cheating' to use this at any setting below <B>0</B> (or above?).
+<DT><B>max_player_corpse</B>
+
+<DD>
+Sets the maximum number of player corpses to leave lying around. If this limit would 
+be exceeded, an old corpse is removed. Useful for big/long Deathmatch games, where the 
+sheer number of corpses could slow the game down.
+<DT><B>flashing_hom</B>
+
+<DD>
+Flag indicating whether a flashing red background is drawn to highlight HOM
+errors in levels (for level developers)
+<DT><B>demo_insurance</B>
+
+<DD>
+Selects a method of protecting demos against `going out of sync' (where the 
+player seems to lose control and behave madly, but in fact the players 
+original instructions as stored in the demo have got out of sync with the 
+game he was playing). <B>0</B>=No protection, <B>1</B>=Full protection, <B>2</B>=Only while 
+recording demos. Safest when left set to <B>2</B>.
+<DT><B>endoom_mode</B>
+
+<DD>
+This parameter specifies options controlling the display of the credits screen 
+when Doom exits. Currently it is the sum of 3 options: add <B>1</B> for colours, <B>2</B> for 
+non-ASCII characters to be displayed, and <B>4</B> for the last line to be skipped so the 
+top line doesn't scroll off screen.
+<DT><B>level_precache</B>
+
+<DD>
+If set, when loading a new level PrBoom precaches all the graphics the level
+is likely to need in memory. This makes it much slower to load the level,
+but reduces disk activity and slowdowns reading data during play. Most
+systems are fast enough that precaching is not needed.
+
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>FILES SETTINGS</H2>
+
+<DL COMPACT>
+<DT><B>wadfile_1,&nbsp;wadfile_2</B>
+
+<DD>
+The names of 2 .wad files to be automatically loaded when PrBoom is started. 
+A blank string means unused.
+
+<DT><B>dehfile_1,&nbsp;dehfile_2</B>
+
+<DD>
+The names of 2 patch files (.deh or .bex) to be automatically loaded when
+PrBoom is started (empty string for none).
+
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>GAME SETTINGS</H2>
+
+<DL COMPACT>
+<DT><B>default_skill</B>
+
+<DD>
+The default skill level when starting a new game.
+<DT><B>weapon_recoil</B>
+
+<DD>
+Enables recoil from weapon fire.
+<DT><B>doom_weapon_toggles</B>
+
+<DD>
+Flag indicating whether pressing 3 or 1 when that weapon is already selected
+causes the selected shotgun or fist/chainsaw to be toggled, as in original
+Doom. Some people prefer to use a number for each weapon alone.
+<DT><B>player_bobbing</B>
+
+<DD>
+Enables player bobbing (view randomly moving up/down slightly as the player
+runs).
+<DT><B>monsters_remember</B>
+
+<DD>
+Makes monsters remember their previous enemy after killing their current
+target.
+<DT><B>monster_infighting</B>
+
+<DD>
+Whether monsters will fight each other when they injure each other
+accidentally. 
+<DT><B>monster_backing</B>
+
+<DD>
+Whether monsters without close combat weapons will back away from close combat
+(unlike original Doom).
+<DT><B>monster_avoid_hazards</B>
+
+<DD>
+Whether monsters avoid crushing ceilings.
+<DT><B>monkeys</B>
+
+<DD>
+Whether monsters will climb steep stairs.
+<DT><B>monster_friction</B>
+
+<DD>
+Whether monsters are affected by changed floor friction (they should be, but
+weren't in Boom) 
+<DT><B>help_friends</B>
+
+<DD>
+Whether monsters will help out injured monsters by aiding them against their
+attacker. 
+<DT><B>player_helpers</B>
+
+<DD>
+The number of helper dogs to spawn.
+<DT><B>friend_distance</B>
+
+<DD>
+Distance within which friends will generally stay.
+<DT><B>dog_jumping</B>
+
+<DD>
+Whether dogs will jump.
+<DT><B>sts_always_red</B>
+
+<DD>
+PrBoom can make the colour of the text displays on the status bar reflect your
+current status (<B>red</B>=low, <B>yellow</B>=average, <B>green</B>=good, <B>blue</B>=super-charged).
+This option if set selects the traditional Doom behavior of always-red status
+bar display; set to <B>0</B> to allow the coloured display.
+<DT><B>sts_pct_always_gray</B>
+
+<DD>
+See above, this makes just the percent signs always gray, instead of
+changing colour.
+<DT><B>sts_traditional_keys</B>
+
+<DD>
+Doom and PrBoom have two types of keys; PrBoom will normally display both keys 
+of a given colour if you have both. This option, if enabled, instead makes
+PrBoom only ever display one key of each colour, in the same way Doom did.
+<DT><B>traditional_menu</B>
+
+<DD>
+Changes PrBoom's menu ordering to be the same as original Doom if enabled.
+<DT><B>show_messages</B>
+
+<DD>
+When enabled, text messages are displayed in the top left corner of the screen
+describing events in the game. Can be toggled in the game, this is just to
+preserve the setting.
+<DT><B>autorun</B>
+
+<DD>
+Makes the player always run, without having to hold down a run key. Can be
+toggled in the game, this just preserves the setting.
+
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>SOUND SETTINGS</H2>
+
+<DL COMPACT>
+<DT><B>sound_card</B>
+
+<DD>
+Selects whether sound effects are enabled (non-zero enables). For compatibility reasons 
+with Boom, a range of values are accepted.
+<DT><B>music_card</B>
+
+<DD>
+Selects whether in-game music is enabled (non-zero enables). For compatibility reasons 
+a range of values are accepted.
+<DT><B>pitched_sounds</B>
+
+<DD>
+If enabled by this variable, this enables `pitching' (making pitch adjustments to the 
+playing sounds) for 16 bit sound cards.
+<DT><B>samplerate</B>
+
+<DD>
+The samplerate for soundmixing and timidity. The sound quality is much better at
+higher samplerates, but if you use timidity then higher samplerates need much
+more CPU power. Useful values are <B>11025</B>, <B>22050</B>, <B>44100</B> and <B>48000</B>.
+<DT><B>sfx_volume</B>
+
+<DD>
+Sound effects volume. This is best adjusted in the game.
+<DT><B>music_volume</B>
+
+<DD>
+Music volume. This is best adjusted in the game. 
+<DT><B>mus_pause_opt</B>
+
+<DD>
+Selects what PrBoom does to the music when a games is paused. <B>0</B>=stop the music, 
+<B>1</B>=pause the music (stop it playing, but when resumed resume it at the same 
+place - not implemented), <B>2</B>=continue playing.
+<DT><B>sounddev</B>,&nbsp;<B>snd_channels</B>,&nbsp;<B>soundsrv</B>,&nbsp;<B>musicsrv</B>
+
+<DD>
+These variables are no longer used by PrBoom, but are kept for compatibility
+reasons.
+
+</DL>
+<A NAME="lbAI">&nbsp;</A>
+<H2>COMPATIBILITY SETTINGS</H2>
+
+These are settings that let you choose whether the normal game mechanics are
+used, or whether various quirks, bugs and limitations of the original Doom game
+are emulated.
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>VIDEO SETTINGS</H2>
+
+<DL COMPACT>
+<DT><B>screen_width</B>,&nbsp;<B>screen_height</B>
+
+<DD>
+For versions of PrBoom which support high-res, these specify the default 
+screen or window size for PrBoom. These settings are ignored and preserved by 
+versions of PrBoom which do not do high-res (they assume 320x200).
+<DT><B>use_fullscreen</B>
+
+<DD>
+If set, this causes PrBoom to try to go full screen. Depending on your 
+video driver and mode, this may include changing screen resolution to 
+better match the game's screen resolution.
+<DT><B>use_doublebuffer</B>
+
+<DD>
+Use double buffering to reduce tearing. On some machines this is even faster
+than the normal method, but on others this makes problems, so you have to try
+out which setting works best.
+<DT><B>translucency</B>
+
+<DD>
+Causes PrBoom to display certain objects as translucent.
+<DT><B>tran_filter_pct</B>
+
+<DD>
+Selects how translucent objects are when they are translucent. Play with this 
+and see for yourself.
+<DT><B>screenblocks</B>
+
+<DD>
+Selects a reduced screen size inside the PrBoom window (the player's view is 
+surrounded by a border). Normally this is undesirable, but it can help speed 
+up the game. Can be changed in the game with the +/- keys, this variable is
+just to preserve that setting.
+<DT><B>usegamma</B>
+
+<DD>
+Selects a level of gamma correction (extra screen brightening) to correct for a 
+dark monitor or light surroundings. Can be selected in the game with the F11 
+key, this config entry preserves that setting.
+
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>OPENGL SETTINGS</H2>
+
+<P>
+
+If you are knowledgeable about OpenGL, you can tweak various aspects of the 
+GL rendering engine.
+<DL COMPACT>
+<DT><B>gl_nearclip</B>
+
+<DD>
+The near clipping plane *100.
+<DT><B>gl_colorbuffer_bits</B>
+
+<DD>
+The bit depth for the framebuffer. (<B>16</B>, <B>24</B> or <B>32</B> bits)
+<DT><B>gl_depthbuffer_bits</B>
+
+<DD>
+The bit depth for the z-buffer. (<B>16</B>, <B>24</B> or <B>32</B> bits)
+<DT><B>gl_tex_filter_string</B>
+
+<DD>
+A string, one of the following: <B>GL_NEAREST</B> or <B>GL_LINEAR</B> (no mipmapping), 
+or one of 
+<B>GL_NEAREST_MIPMAP_NEAREST</B>, <B>GL_NEAREST_MIPMAP_LINEAR</B>, 
+<B>GL_LINEAR_MIPMAP_NEAREST</B>, <B>GL_LINEAR_MIPMAP_LINEAR</B> 
+with mipmapping.
+<DT><B>gl_tex_format_string</B>
+
+<DD>
+One of the following strings:
+<B>GL_RGBA</B> - means format selected by driver (not so good),
+<B>GL_RGBA2</B> - means 2 bits for each component (bad),
+<B>GL_RGBA4</B> - means 4 bits for each component (like <B>GL_RGBA</B> on most cards), 
+<B>GL_RGB5_A1</B> - means 5 bits for each color component 1 bit for the alpha channel (default),
+<B>GL_RGBA8</B> - means 
+8 bits for each component (best quality, but only a little bit better
+than <B>GL_RGB5_A1</B> and slower on most cards)
+<DT><B>gl_drawskys</B>
+
+<DD>
+If <B>0</B>, disables drawing skies, which may be needed with some problematic 
+3D cards.
+<DT><B>gl_sortsprites</B>
+
+<DD>
+Experimental option, possibly faster but less reliable. 
+
+</DL>
+<A NAME="lbAL">&nbsp;</A>
+<H2>MOUSE SETTINGS</H2>
+
+<P>
+
+This section specifies settings for using a mouse with PrBoom. There are
+several settings that control button bindings (what action each button causes
+in the game); these are easiest set from the in-game menus, these config
+entries are to preserve the settings between games.
+<DL COMPACT>
+<DT><B>use_mouse</B>
+
+<DD>
+Enable or disable the use of a mouse with PrBoom.
+<DT><B>mouse_sensitivity_horiz</B>,&nbsp;<B>mouse_sensitivity_vert</B>
+
+<DD>
+Sets the sensitivity of the mouse in PrBoom. Easier set from the in-game menus.
+
+</DL>
+<A NAME="lbAM">&nbsp;</A>
+<H2>KEY BINDINGS</H2>
+
+<P>
+
+These specify the keys that trigger various actions in PrBoom. The codes used 
+for keys are internal to PrBoom, though many keys are represented by their 
+ASCII codes. It is easiest to modify these via the in-game menus 
+(OPTIONS-&gt;SETUP-&gt;KEY BINDINGS). These config file entries preserve the
+settings from this menu between game sessions.
+
+<A NAME="lbAN">&nbsp;</A>
+<H2>JOYSTICK SETTINGS</H2>
+
+<P>
+
+There are the trigger variables here, which are calculated during joystick 
+calibration (the values received from the kernel driver outside of which 
+movement is caused in the game). Also there are the button-bindings, again 
+best adjusted using the in-game menus.
+<DL COMPACT>
+<DT><B>use_joystick</B>
+
+<DD>
+This selects the number of the joystick to use, or <B>0</B> selects no joystick. You 
+have to have the relevant device files (<B>/dev/js0</B> etc) and the kernel driver 
+loaded.
+
+</DL>
+<A NAME="lbAO">&nbsp;</A>
+<H2>CHAT MACROS</H2>
+
+<P>
+
+These are pre-written text strings for quick transmission to players in a 
+network game (consult your Doom documentation). Easiest set via the in-game 
+menus (OPTIONS-&gt;SETUP-&gt;CHAT MACROS).
+
+<A NAME="lbAP">&nbsp;</A>
+<H2>AUTOMAP SETTINGS</H2>
+
+<P>
+
+These are settings related to the automap. These are easiest set from 
+within the game.
+
+<A NAME="lbAQ">&nbsp;</A>
+<H2>HEADS_UP DISPLAY SETTINGS</H2>
+
+<P>
+
+These are settings related to the heads-up display, that is messages received 
+while playing and the heads-up display of your current status obtained by 
+pressing + while the view is full-screen in PrBoom. See the Boom documentation 
+for details. All controlled best from within the game.
+
+<A NAME="lbAR">&nbsp;</A>
+<H2>WEAPON PREFERENCES</H2>
+
+<P>
+
+Here are the settings from the Weapons menu in the game 
+(OPTIONS-&gt;SETUP-&gt;WEAPONS). 
+
+<A NAME="lbAS">&nbsp;</A>
+<H2>ALSO SEE</H2>
+
+<B><A HREF="http://localhost/cgi-bin/man/man2html?6+prboom">prboom</A>(6),</B>
+
+PrBoom's documentation (including the Boom and MBF documentation)
+and your Doom documentation.
+
+<A NAME="lbAT">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+See the file <B>AUTHORS</B> included with PrBoom for a list of contributors to PrBoom.
+This config file reference written by Colin Phipps (<A HREF="mailto:cph@moria.org.uk">cph@moria.org.uk</A>).
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">USAGE</A><DD>
+<DT><A HREF="#lbAD">FORMAT</A><DD>
+<DT><A HREF="#lbAE">MISC SETTINGS</A><DD>
+<DT><A HREF="#lbAF">FILES SETTINGS</A><DD>
+<DT><A HREF="#lbAG">GAME SETTINGS</A><DD>
+<DT><A HREF="#lbAH">SOUND SETTINGS</A><DD>
+<DT><A HREF="#lbAI">COMPATIBILITY SETTINGS</A><DD>
+<DT><A HREF="#lbAJ">VIDEO SETTINGS</A><DD>
+<DT><A HREF="#lbAK">OPENGL SETTINGS</A><DD>
+<DT><A HREF="#lbAL">MOUSE SETTINGS</A><DD>
+<DT><A HREF="#lbAM">KEY BINDINGS</A><DD>
+<DT><A HREF="#lbAN">JOYSTICK SETTINGS</A><DD>
+<DT><A HREF="#lbAO">CHAT MACROS</A><DD>
+<DT><A HREF="#lbAP">AUTOMAP SETTINGS</A><DD>
+<DT><A HREF="#lbAQ">HEADS_UP DISPLAY SETTINGS</A><DD>
+<DT><A HREF="#lbAR">WEAPON PREFERENCES</A><DD>
+<DT><A HREF="#lbAS">ALSO SEE</A><DD>
+<DT><A HREF="#lbAT">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 20:40:05 GMT, November 09, 2008
+</BODY>
+</HTML>

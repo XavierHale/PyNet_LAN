@@ -24,6 +24,7 @@ import time
 
 ver = 1.3
 
+machine_Name = os.environ['COMPUTERNAME']
 
 def err(type, msg):
     print("We encountered an error. Here are the details:")
@@ -134,6 +135,12 @@ ctypes.windll.kernel32.SetConsoleTitleW("PyNet Version 1.1")
 #        # finally, send the message
 #        s.send(to_send.encode())
 #    choice(0)
+
+def hostdoom():
+    os.chdir("doom")
+    
+
+
 
 
 def privchat():
@@ -270,6 +277,7 @@ What would you like to do?
     if boardchoice == "4":
         print("PyNet Version", ver)
         print("Developed by Xavier Hale")
+        print("DOOM provided py PrBoom")
         print("Version complied on 2/16/2023")
         choice(1)
 

@@ -1,0 +1,389 @@
+Content-type: text/html
+
+<HTML><HEAD><TITLE>Manpage of PRBOOM</TITLE>
+</HEAD><BODY>
+<H1>PRBOOM</H1>
+Section: Games and Demos (6)<BR>Updated: local<BR><A HREF="#index">Index</A>
+<A HREF="http://localhost/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+prboom - PrBoom, a version of Doom for Unix, Linux and Windows systems
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>prboom</B>
+
+[ -complevel <I>lvl</I> ]
+<B></B>
+
+[ -width <I>w</I> ] [ -height <I>h</I> ] [ -viewangle <I>n</I> ] [ -vidmode <I>gl</I> ] [ -[no]fullscreen ] [ -[no]window ]
+<B></B>
+
+[ -iwad <I>iwadname</I> ] [ -file <I>wad1 ...</I> ] [ -deh <I>deh_file</I> ] [ -noload ]
+<B></B>
+
+[ -loadgame {0,1,2,3,4,5,6,7} ] [ -warp { <I>map</I> | <I>epis level</I> } -skill {1,2,3,4,5} ]
+<B></B>
+
+[ {-fastdemo,-timedemo,-playdemo} <I>demofile</I> [ -ffmap <I>num</I> ] ] [ -record <I>demofile</I> ] [ -solonet ]
+<B></B>
+
+[ -net <I>hostname</I>[:<I>port</I>] ]
+[ -deathmatch [ -altdeath ] ] [ { -timer <I>mins</I> | -avg }] ]
+<B></B>
+
+[ -nosound ] [ -nosfx ] [ -nomusic] [ -nojoy ] [ -nomouse ]
+[ -noaccel ] [ -nodraw ]
+<B></B>
+
+[ -config <I>myconf</I> ] [ -save <I>savedir</I> ] 
+<B></B>
+
+[ -bexout <I>bexdbg</I> ] [ -debugfile <I>debug_file</I> ] [ -devparm ] [ -noblit ] [ -nodrawers ]
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>PrBoom</B>
+
+is a version of the 3D shoot'em'up Doom, originally by iD software. 
+It is based on Boom, a version of Doom adapted by TeamTNT 
+(<A HREF="http://www.teamtnt.com/)">http://www.teamtnt.com/)</A> for DOS. PrBoom uses the SDL library, 
+meaning it can run on a variety of different systems, 
+including Windows, X11, Linux/SVGALib.
+<A NAME="lbAE">&nbsp;</A>
+<H2>Options</H2>
+
+<DL COMPACT>
+<DT><B>-complevel&nbsp;</B><I>lvl</I>
+
+<DD>
+This sets the compatibility mode that PrBoom runs in. If you need to change
+this, see <B>README.compat</B>.
+
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>Video Options</H2>
+
+<DL COMPACT>
+<DT><B>-width&nbsp;</B><I>w</I>
+
+<DD>
+Specifies the width of the PrBoom window, in pixels. Default is <B>320</B>, the
+width must be greater than 320..
+<DT><B>-height&nbsp;</B><I>h</I>
+
+<DD>
+Specifies the height of the PrBoom window, in pixels. Default is <B>200</B>, the
+height must be greater than 200.
+<DT><B>-viewangle&nbsp;</B><I>n</I>
+
+<DD>
+Causes the player view to be rotated by a given offset (specified in 45degree
+increments, in the range 0..7) from the way the player is facing.
+<DT><B>-vidmode&nbsp;</B><I>gl</I>
+
+<DD>
+Use the OpenGL video mode. The default is to use the software video mode.
+<DT><B>-fullscreen,&nbsp;-nofullscreen</B>
+
+<DD>
+These options toggle fullscreen mode. The default is fullscreen.
+<DT><B>-window,&nbsp;-nowindow</B>
+
+<DD>
+This pair of options also toggle fullscreen mode. They only take effect for
+this prboom session and do not alter your configuration file.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>WAD Options</H2>
+
+<DL COMPACT>
+<DT><B>-iwad&nbsp;</B><I>iwadname</I>
+
+<DD>
+Specifies the location of the IWAD file, typically doom.wad or doom2.wad (or
+doom2f.wad). This tells prboom where the main .wad file that came with the
+version of Doom that you own is. 
+<DT><B>-file&nbsp;</B><I>wad1&nbsp;...</I>
+
+<DD>
+Specifies a list of PWAD files to load in addition to the IWAD file. PWAD
+files modify the existing Doom game, by adding levels or new sounds or
+graphics. PWAD files are widely available for download; try
+<A HREF="ftp://ftp.cdrom.com">ftp.cdrom.com</A>/pub/idgames for starters.
+<DT><B>-deh&nbsp;</B><I>deh_file</I>
+
+<DD>
+Tells PrBoom to load the dehacked patch <I>deh_file</I>.
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>Game Options</H2>
+
+<DL COMPACT>
+<DT><B>-loadgame&nbsp;</B><I>{</I><B>0,1,2,3,4,5,6,7</B><I>}</I>
+
+<DD>
+Instructs PrBoom to load the specified saved game immediately. 
+<DT><B>-warp</B> { <I>map</I> | <I>epis</I> <I>level</I> }<DD>
+Tells PrBoom to begin a new game immediately. For Doom 1 or Ultimate Doom,
+you must specify the <I>epis</I>ode and <I>level</I> number to begin at
+(<I>epis</I> is <B>1</B> for Knee-Deep in the Dead, <B>2</B> for Shores of Hell, <B>3</B> for
+Inferno, <B>4</B> for Ultimate Doom; <I>level</I> is between <B>1</B> and <B>9</B>). For Doom ][ or
+Final Doom, you must specify the <I>map</I> to begin at, which is between <B>1</B> and
+<B>2</B> (<B>0</B> for German Doom ][).
+<DT><B>-skill&nbsp;</B><I>n</I>
+
+<DD>
+Tells PrBoom to begin the game
+at skill level <I>n</I> (<B>1</B> for ITYTD, <B>2</B> for Not Too Rough, <B>3</B> for Hurt Me
+Plenty, <B>4</B> for Ultraviolent, <B>5</B> for Nightmare). 
+<DT><B>-respawn</B><I></I>
+
+<DD>
+Tells PrBoom that
+monsters that die should respawn (come back to life) after a while. Not for
+the inexperienced.
+<DT><B>-fast</B>
+
+<DD>
+Tells PrBoom to make all the monsters move 
+react faster. Not for the inexperienced. 
+<DT><B>-nomonsters</B>
+
+<DD>
+Tells PrBoom to include no monsters in the game.
+</DL>
+<A NAME="lbAI">&nbsp;</A>
+<H2>Multiplayer Options</H2>
+
+<DL COMPACT>
+<DT><B>-net</B> <I>hostname</I>[:<I>port</I>]<DD>
+Specifies that a TCP/IP network game is to be started. <I>hostname</I> is the 
+name of the machine on which the network game server is running 
+(<B>prboom-game-server</B>). For more information about this, see 
+<B><A HREF="http://localhost/cgi-bin/man/man2html?6+prboom-game-server">prboom-game-server</A></B>(6)
+
+and the <B>README</B> that came with prboom. <I>port</I> is the 
+port number on the remote machine to which to connect; if not specified, the 
+default of <B>5030</B> (which is the default for 
+<B><A HREF="http://localhost/cgi-bin/man/man2html?6+prboom-game-server">prboom-game-server</A></B>(6)
+
+) is assumed. 
+The server will configure your PrBoom settings, so that all the players have 
+the same game settings (skill, map etc). 
+</DL>
+<P>
+
+Also, the server may specify additional PWAD files to play with; if you do 
+not have the required .WAD file, PrBoom will ask the server for a download 
+path, and attempt to use 
+<B><A HREF="http://localhost/cgi-bin/man/man2html?1+wget">wget</A>(1)</B>
+
+and if necessary 
+<B><A HREF="http://localhost/cgi-bin/man/man2html?1+unzip">unzip</A>(1)</B>
+
+to download and extract the required WAD.
+<DL COMPACT>
+<DT><B>-port&nbsp;</B><I>portnum</I>
+
+<DD>
+Specifies the local port to use to communicate with the server in a netgame.
+<DT><B>-deathmatch</B>
+
+<DD>
+No longer used. Tells PrBoom to begin a deathmatch game, but this is overridden 
+by the server's settings. Only works for single play (!).
+<DT><B>-altdeath</B>
+
+<DD>
+Similar to <B>-deathmatch</B>, but implies a different set of rules for the 
+deathmatch game. No longer used (specified by the server).
+<DT><B>-timer&nbsp;</B><I>mins</I>
+
+<DD>
+No longer used. Specifies that levels will end after <I>mins</I> minutes of
+play if the level is still being played, but is overridden by the server in 
+a netgame. Not really useful for single play.
+<DT><B>-avg</B>
+
+<DD>
+Equivalent to <B>-timer 20</B>
+<DT><B>-solo-net</B>
+
+<DD>
+Used to run a single-player network game, without a network game server. This
+enables network game items &amp; options for an otherwise single-player game; some
+demos are recorded like this.
+</DL>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>Demo (LMP) Options</H2>
+
+<DL COMPACT>
+<DT><B>-record&nbsp;</B><I>demofile</I>
+
+<DD>
+Instructs PrBoom to begin recording a demo, to be stored in <I>demofile.lmp</I>. You should specify <B>game options</B> to specify which level and skill to record at.
+<DT><B>-playdemo&nbsp;</B><I>demofile</I>
+
+<DD>
+Play the recorded demo <I>demofile.lmp</I>
+<DT><B>-timedemo&nbsp;</B><I>demofile</I>
+
+<DD>
+Play the recorded demo <I>demofile.lmp</I>, reporting information about the length of the demo (in gametics) afterwards.
+<DT><B>-fastdemo&nbsp;</B><I>demofile</I>
+
+<DD>
+Play the recorded demo <I>demofile.lmp</I> as fast as possible. Useful for 
+benchmarking PrBoom, as compared to other versions of Doom.
+<DT><B>-ffmap&nbsp;</B><I>num</I>
+
+<DD>
+Fast forward the demo (play at max speed) until reaching map <I>num</I>
+(note that this takes just a number, not a map name, so so <B>-ffmap 7</B> to go fast
+until MAP07 or ExM7).
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>I/O Options</H2>
+
+<DL COMPACT>
+<DT><B>-nosound</B>
+
+<DD>
+Disables all sound effects and in-game music. This prevents the sound server 
+loading, which lets the game run a little faster. 
+<DT><B>-nosfx</B>
+
+<DD>
+Disables sound effects during the game. This does not stop the sound server 
+loading, however, so for best performance use -nosound.
+<DT><B>-nomusic</B>
+
+<DD>
+Disables playing of music in the game.
+<DT><B>-nojoy</B>
+
+<DD>
+Disables joystick support.
+<DT><B>-nomouse</B>
+
+<DD>
+Prevents the mouse being grabbed by the prboom window.
+<DT><B>-noaccel</B>
+
+<DD>
+For prboom, this prevents it using the MITShm server extension for passing
+the screen data to the X server. This option may be required if the X server
+is not local. For lsdoom, this tells lsdoom not to use the accelerated
+graphics functions that SVGALib provides even when they are supported for
+your video card (normally this is autodetected).
+<DT><B>-1</B>,&nbsp;<B>-2</B>,&nbsp;<B>-3</B>
+
+<DD>
+Specifies the scale factor by which to enlarge the window. The default,
+<B>-1</B>, displays the normal 320x200 pixel Doom screen (or whatever size is
+specified by the <B>-width</B> and <B>-height</B> parameters or in the config
+file for prboom).  If this window is too small, try using <B>-2</B> or <B>-3</B>
+to enlarge the window.
+<B>-nodraw</B>
+
+Suppress all graphical display. Only for debugging &amp; demo testing.
+</DL>
+<A NAME="lbAL">&nbsp;</A>
+<H2>Configuration</H2>
+
+<DL COMPACT>
+<DT><B>-config&nbsp;</B><I>myconf</I>
+
+<DD>
+Loads an alternative configuration file, named <I>myconf</I>. The default is 
+<B><A HREF="http://localhost/cgi-bin/man/man2html?5+boom.cfg">boom.cfg</A></B>(5),
+
+taken from the same directory as PrBoom was run from, except when running with OpenGL, then the default is 
+<B><A HREF="http://localhost/cgi-bin/man/man2html?5+glboom.cfg">glboom.cfg</A></B>(5).
+
+<DT><B>-save&nbsp;</B><I>savedir</I>
+
+<DD>
+Causes prboom to save games in the directory specified by <I>savedir</I> 
+instead of <B>~/.prboom/</B>.
+</DL>
+<A NAME="lbAM">&nbsp;</A>
+<H2>Debugging/Profiling Options</H2>
+
+<DL COMPACT>
+<DT><B>-devparm</B>
+
+<DD>
+Development mode. Mostly redundant these days, but it does force non-lazy
+generation of texture lookups which can be useful for level authors debugging
+PWADs.
+<DT><B>-debugfile&nbsp;</B><I>debug_file</I>
+
+<DD>
+Causes some debugging information, mainly network info I believe, to be written to the named file as prboom runs.
+<DT><B>-nodrawers</B>
+
+<DD>
+Causes no rendering to be done. The only conceivable use of this is (a) a multiplayer server (b) to test the speed of the other routines in the program, when combined with <B>-timedemo</B>.
+<DT><B>-noblit</B>
+
+<DD>
+Causes no copying to the screen from the rendering buffer to be performed. The only conceivable use of this is (a) a multiplayer server (b) to test the speed of the other routines in the program, when combined with <B>-timedemo</B>.
+<DT><B>-bexout&nbsp;</B><I>bexdbg</I>
+
+<DD>
+Causes diagnostics related to bex and dehacked file processing to be written 
+to the names file.
+</DL>
+<A NAME="lbAN">&nbsp;</A>
+<H2>More Information</H2>
+
+<B><A HREF="http://localhost/cgi-bin/man/man2html?1+wget">wget</A></B>(1),
+
+<B><A HREF="http://localhost/cgi-bin/man/man2html?1+unzip">unzip</A></B>(1),
+
+<B><A HREF="http://localhost/cgi-bin/man/man2html?5+boom.cfg">boom.cfg</A></B>(5),
+
+<B><A HREF="http://localhost/cgi-bin/man/man2html?6+prboom-game-server">prboom-game-server</A></B>(6)
+
+<P>
+
+For more information, see the <B>README</B> that came with PrBoom, the Boom 
+documentation, and your original Doom documentation.
+<P>
+
+Doom is a registered trademark of id software (<A HREF="http://www.idsoftware.com/).">http://www.idsoftware.com/).</A>
+<A NAME="lbAO">&nbsp;</A>
+<H2>Author</H2>
+
+See the file <B>AUTHORS</B> included with the PrBoom distribution.
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">Options</A><DD>
+<DT><A HREF="#lbAF">Video Options</A><DD>
+<DT><A HREF="#lbAG">WAD Options</A><DD>
+<DT><A HREF="#lbAH">Game Options</A><DD>
+<DT><A HREF="#lbAI">Multiplayer Options</A><DD>
+<DT><A HREF="#lbAJ">Demo (LMP) Options</A><DD>
+<DT><A HREF="#lbAK">I/O Options</A><DD>
+<DT><A HREF="#lbAL">Configuration</A><DD>
+<DT><A HREF="#lbAM">Debugging/Profiling Options</A><DD>
+<DT><A HREF="#lbAN">More Information</A><DD>
+<DT><A HREF="#lbAO">Author</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 20:40:05 GMT, November 09, 2008
+</BODY>
+</HTML>

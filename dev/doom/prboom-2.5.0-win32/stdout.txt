@@ -1,0 +1,45 @@
+
+prboom v2.5.0 (http://prboom.sourceforge.net/)
+I_SetAffinityMask: manual affinity mask is 1
+M_LoadDefaults: Load system defaults.
+ default file: D:\Games\prboom-2.5.0-win32/prboom.cfg
+ found doom.wad
+IWAD found: doom.wad
+PrBoom (built Nov  9 2008), playing: The Ultimate DOOM
+PrBoom is released under the GNU General Public license v2.0.
+You are welcome to redistribute it under certain conditions.
+It comes with ABSOLUTELY NO WARRANTY. See the file COPYING for details.
+V_Init: allocate screens.
+ found prboom.wad
+D_InitNetGame: Checking for network game.
+W_Init: Init WADfiles.
+ adding doom.wad
+ adding prboom.wad
+W_InitCache
+
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - 
+R_LoadTrigTables: Endianness...ok.
+R_InitData: Textures Flats Sprites 
+R_Init: R_InitPlanes R_InitLightTables R_InitSkyMap R_InitTranslationsTables R_InitPatches 
+P_Init: Init Playloop state.
+I_Init: Setting up machine state.
+I_InitSound:  configured audio device with 1024 samples/slice
+I_InitSound: sound module ready
+S_Init: Setting up sound.
+S_Init: default sfx volume 8
+HU_Init: Setting up heads up display.
+I_InitGraphics: 1920x1080
+I_UpdateVideoMode: 1920x1080 (fullscreen)
+V_InitMode: using 8 bit video mode
+I_SetRes: Using resolution 1920x1080
+I_UpdateVideoMode: 0xe0000000, SDL buffer, direct access
+ST_Init: Init status bar.
+P_GetNodesVersion: using normal BSP nodes
+P_GetNodesVersion: using normal BSP nodes
+P_GetNodesVersion: using normal BSP nodes
+P_GetNodesVersion: using normal BSP nodes
+I_ShutdownMusic: removing doom.tmp
+I_ShutdownSound: 
+
+       ##################################################################                           DOOM, a hellish 3-D game by id Software.                            ################################################################                               YOU ARE PLAYING THE ULTIMATE DOOM.                                                                                                                If you haven't paid for DOOM, you are playing illegally. That                  means you owe us money. Of course, a guy like you probably owes                  a lot of people money--your friends, maybe even your parents.                    Stop being a freeloader and register DOOM. Call us now at                                       1-800-IDGAMES. We can help!                                                                                                                     We hope you enjoy playing DOOM. We enjoyed making it for you.                      If you have any problems playing DOOM, please call our                                 technical support line at (970) 522-1797.                                                                                                                                  id SOFTWARE IS:                                          Programming: John Carmack, Mike Abrash, John Romero, Dave Taylor                      Art: Adrian Carmack, Kevin Cloud    BIZ: Jay Wilbur                       Design: Sandy Petersen, John Romero, American McGee, Shawn Green                         Technical Support: Shawn Green, American McGee                                                                                                                    Special Thanks: Tim Willits, John Anderson                                                                                                                                                                                   

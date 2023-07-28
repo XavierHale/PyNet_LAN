@@ -1,0 +1,186 @@
+Content-type: text/html
+
+<HTML><HEAD><TITLE>Manpage of PRBOOM-GAME-SERVER</TITLE>
+</HEAD><BODY>
+<H1>PRBOOM-GAME-SERVER</H1>
+Section: Games and Demos (6)<BR>Updated: local<BR><A HREF="#index">Index</A>
+<A HREF="http://localhost/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+prboom-game-server - Server for network games of PrBoom.
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>prboom-game-server</B>
+
+[ -adfnrv ] [ -e <I>epis</I> ] [ -l <I>level</I> ] [ -t <I>ticdup</I> ]
+<B></B>
+
+[ -x <I>xtics</I> ] [ -p <I>port</I> ] [ -s <I>skill</I> ] [ -N <I>players</I> ]
+<B></B>
+
+[ -c <I>conffilename</I> ]
+<B></B>
+
+[ -w <I>wadname</I>[,<I>dl_url</I> ]]
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+<B>PrBoom</B>
+
+is a version of the 3D shoot'em'up Doom, originally by id software. 
+It includes, amongst other things, the ability to play with several players 
+connected by a tcp/ip network. <B>prboom-game-server</B> is the `server', that is the 
+program that passes data between the different players in the game.
+<P>
+
+To start a network game (often abbreviated to `netgame'), first the server 
+is started. <B>prboom-game-server</B> accepts various parameters to control the 
+type of game (the skill level, number of players, level to play, optional 
+WAD file(s) to load, etc).
+<P>
+
+Then each player that wishes to participate runs 
+<B>prboom -net </B>
+
+<I>hostname</I>,<I></I>
+
+where <I>hostname</I> is the name of the machine on which the server is 
+running. Each copy of prboom retrieves information about the game from 
+the server, and when the specified number of players have joined, the game 
+begins.
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>Options</H2>
+
+<DL COMPACT>
+<DT><B>-N&nbsp;</B><I>players</I>
+
+<DD>
+Specifies the number of players in the game (default <B>2</B>). The server will wait 
+for this many players to join before starting the game.
+<DT><B>-e&nbsp;</B><I>epis</I>
+
+<DD>
+The episode to play (default <B>1</B>).  Unless you are playing Doom 1 or Ultimate 
+Doom, and wish to play one of the later episodes, you do not need to change 
+this.
+<DT><B>-l&nbsp;</B><I>level</I>
+
+<DD>
+The level to play (default <B>1</B>). 
+<DT><B>-s&nbsp;</B><I>skill</I>
+
+<DD>
+Specify the skill level to play (<B>1-5</B>).
+<DT><B>-d</B>
+
+<DD>
+Set game mode to (old) deathmatch (default is cooperative). See the original 
+Doom docs for information about the different network game modes.
+<DT><B>-a</B>
+
+<DD>
+Set game mode to `altdeath' (v2 deathmatch) (default is cooperative). See the 
+original Doom docs for information about the different network game modes.
+<DT><B>-f</B>
+
+<DD>
+Select fast mode (monsters move faster).
+<DT><B>-n</B>
+
+<DD>
+Selects nomonsters mode, i.e. there are no monsters in the game.
+<DT><B>-r</B>
+
+<DD>
+Respawn mode. If you don't know what this is, you don't want to ;-).
+<DT><B>-c&nbsp;</B><I>conffilename</I>
+
+<DD>
+Specifies a configuration file to read which sets parameters for the
+game. This is in the same format as the PrBoom configuration file (in
+fact, you can ask it to read your normal PrBoom configuration file if
+you want). Only certain settings are acknowledged: default_skill,
+default_compatibility_level, the compatibility options and some of the
+game settings (use -v to have the server print the options as it
+recognises them).
+<DT><B>-w</B> <I>wadname</I>[,<I>dl_url</I>]<DD>
+Specifies a WAD file to play. This is added to the internal list that the 
+server keeps. When a client connects, the server sends the list of WADs; 
+PrBoom will then add this to the list of WADs specified on its command line. 
+Optionally, an url to the file can be given too; if when PrBoom connects 
+it cannot find the named WAD, it will attempt to retrieve the file 
+from the given url, extracting it if necessary. See 
+<B><A HREF="http://localhost/cgi-bin/man/man2html?1+prboom">prboom</A>(1)</B>
+
+for information about the supported url types and compression formats.
+<DT><B>-t&nbsp;</B><I>ticdup</I>
+
+<DD>
+Reserved.
+<DT><B>-x&nbsp;</B><I>xtics</I>
+
+<DD>
+This causes extra information to be sent with each network packet; this 
+will help on networks with high packet loss, but will use more bandwidth.
+<DT><B>-p&nbsp;</B><I>port</I>
+
+<DD>
+Tells 
+<B>prboom-game-server</B>
+
+what port number to communicate via (default <B>5030</B>). 
+Note that if you change this from the default, then all the clients will 
+also need to specify this number when they try to connect (the default 
+programmed into prboom is also <B>5030</B>).
+<DT><B>-v</B>
+
+<DD>
+Increases verbosity level; causes more diagnostics to be printed, the more 
+times <B>-v</B> is specified.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>More Information</H2>
+
+<B><A HREF="http://localhost/cgi-bin/man/man2html?6+prboom">prboom</A></B>(6),
+
+<B><A HREF="http://localhost/cgi-bin/man/man2html?5+boom.cfg">boom.cfg</A></B>(5)
+
+<P>
+
+For more information, see the <B>README</B> that came with PrBoom.
+<P>
+
+Doom is a registered trademark of id software (<A HREF="http://www.idsoftware.com/).">http://www.idsoftware.com/).</A>
+<A NAME="lbAG">&nbsp;</A>
+<H2>Author</H2>
+
+See the file <B>AUTHORS</B> included with the PrBoom distribution. 
+This man page was written by Colin Phipps (<A HREF="mailto:cph@moria.org.uk">cph@moria.org.uk</A>).
+
+
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">Options</A><DD>
+<DT><A HREF="#lbAF">More Information</A><DD>
+<DT><A HREF="#lbAG">Author</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 20:40:05 GMT, November 09, 2008
+</BODY>
+</HTML>
