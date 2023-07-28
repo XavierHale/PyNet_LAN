@@ -1,3 +1,12 @@
+# File sharing:
+# Host a background process that will have a thread permanently open.
+# It will have a code that's unique to the file, and it will not accept anything else.
+# Files will be shared by simple means, as in a point-to-point system.
+# If the port is in use, it will queue the user until he port will respond.
+#
+#
+
+
 import socket
 import os
 import privateserver
@@ -12,7 +21,8 @@ import time
 
 # VERSION REPORTING
 # REMEMBER TO CHANGE THIS
-ver = 1.0
+
+ver = 1.3
 
 
 def err(type, msg):
@@ -23,6 +33,8 @@ def err(type, msg):
 s = socket.socket()
 st = 0.02
 
+def fileshare():
+    print("This is an early feature, expect bugs.")
 
 def sp(text):
     for char in text:
@@ -60,7 +72,7 @@ print("")
 time.sleep(1)
 sp("Locating data...")
 print("")
-time.sleep(1)
+
 sp("Found module NETWORK_EXPL:NOCOM.")
 print("")
 time.sleep(1)
@@ -69,59 +81,59 @@ print("")
 time.sleep(1)
 ctypes.windll.kernel32.SetConsoleTitleW("PyNet Version 1.1")
 
-
-def pubchat():
-    # server's IP address
-    # if the server is not on this machine,
-    # put the private (network) IP address (e.g 192.168.1.2)
-    sp("Enter IP to connect to:")
-    SERVER_HOST = input("")
-    SERVER_PORT = 5002  # server's port
-    separator_token = "<SEP>"  # we will use this to separate the client name & message
-    sp("Hooking into network thread...")
-    time.sleep(1)
-    print("")
-
-    # initialize TCP socket
-    sp(f"[*] Connecting to {SERVER_HOST}:{SERVER_PORT}...")
-    print("")
-    # connect to the server
-    sp("Hooked.")
-    print("")
-    s.connect((SERVER_HOST, SERVER_PORT))
-    sp("[+] Connected.")
-    print("")
-    # prompt the client for a name
-    name = input("Enter your name: ")
-
-    sp("You can start chatting. Type q to return to the menu.")
-    print("")
-
-    def listen_for_messages():
-        while True:
-            message = s.recv(1024).decode()
-            print("\n" + message)
-
-    # make a thread that listens for messages to this client & print them
-    t = Thread(target=listen_for_messages)
-    # make the thread daemon so it ends whenever the main thread ends
-    t.daemon = True
-    # start the thread
-    t.start()
-    while True:
-        # input message we want to send to the server
-        to_send = input(">")
-        # a way to exit the program
-        if to_send.lower() == "q":
-            break
-        # add the datetime, name & the color of the sender
-        date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        to_send = (
-            f"{client_color}[{date_now}] {name}{separator_token}{to_send}{Fore.RESET}"
-        )
-        # finally, send the message
-        s.send(to_send.encode())
-    choice(0)
+#depricated, need to have a pemanent server provider
+#def pubchat():
+#    # server's IP address
+#    # if the server is not on this machine,
+#    # put the private (network) IP address (e.g 192.168.1.2)
+#    sp("Enter IP to connect to:")
+#    SERVER_HOST = input("")
+#    SERVER_PORT = 5002  # server's port
+#    separator_token = "<SEP>"  # we will use this to separate the client name & message
+#    sp("Hooking into network thread...")
+#    time.sleep(1)
+#    print("")
+#
+#    # initialize TCP socket
+#    sp(f"[*] Connecting to {SERVER_HOST}:{SERVER_PORT}...")
+#    print("")
+#    # connect to the server
+#    sp("Hooked.")
+#    print("")
+#    s.connect((SERVER_HOST, SERVER_PORT))
+#    sp("[+] Connected.")
+#    print("")
+#    # prompt the client for a name
+#    name = input("Enter your name: ")
+#
+#    sp("You can start chatting. Type q to return to the menu.")
+#    print("")
+#
+#    def listen_for_messages():
+#        while True:
+#            message = s.recv(1024).decode()
+#            print("\n" + message)
+#
+#    # make a thread that listens for messages to this client & print them
+#    t = Thread(target=listen_for_messages)
+#    # make the thread daemon so it ends whenever the main thread ends
+#    t.daemon = True
+#    # start the thread
+#    t.start()
+#    while True:
+#        # input message we want to send to the server
+#        to_send = input(">")
+#        # a way to exit the program
+#        if to_send.lower() == "q":
+#            break
+#        # add the datetime, name & the color of the sender
+#        date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+#        to_send = (
+#            f"{client_color}[{date_now}] {name}{separator_token}{to_send}{Fore.RESET}"
+#        )
+#        # finally, send the message
+#        s.send(to_send.encode())
+#    choice(0)
 
 
 def privchat():
