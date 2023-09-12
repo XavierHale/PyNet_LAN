@@ -43,7 +43,6 @@ def sp(text):
         time.sleep(st)
 
 
-ctypes.windll.kernel32.SetConsoleTitleW("NOCOM")
 # init colors
 init()
 
@@ -67,19 +66,6 @@ colors = [
 ]
 
 # choose a random color for the client
-client_color = random.choice(colors)
-sp("Initializing...")
-print("")
-time.sleep(1)
-sp("Locating data...")
-print("")
-
-sp("Found module NETWORK_EXPL:NOCOM.")
-print("")
-time.sleep(1)
-sp("Loaded NOCOM from NETWORK_EXPL")
-print("")
-time.sleep(1)
 ctypes.windll.kernel32.SetConsoleTitleW("PyNet Version 1.1")
 
 #depricated, need to have a pemanent server provider
@@ -195,7 +181,7 @@ def privchat():
         print("")
         # prompt the client for a name
         name = input("Enter your name: ")
-
+        client_color = colors[random]
         sp("You can start chatting. Type q to return to the menu.")
         print("")
 
@@ -277,7 +263,7 @@ What would you like to do?
     if boardchoice == "4":
         print("PyNet Version", ver)
         print("Developed by Xavier Hale")
-        print("DOOM provided py PrBoom")
+        print("DOOM provided by PrBoom")
         print("Version complied on 2/16/2023")
         choice(1)
 
