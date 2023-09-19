@@ -11,7 +11,6 @@ import socket
 import os
 import privateserver
 import random
-from slowprint import slowprint
 from threading import Thread
 from datetime import datetime
 from colorama import Fore, init, Back
